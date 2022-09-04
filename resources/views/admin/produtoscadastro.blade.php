@@ -109,11 +109,11 @@ if(isset($produto)) {
                 <label class="text-label">Data do Pedido</label><br />
                 <input type="date" required class="form-control" id="datapedido" name="datapedido" value="{{$labels['datapedido']}}" >
             </div>
-@can('manage-users')
+
             <div class="col-10 mt-2 text-right">
                 <input type="submit" value="Salvar" class="btn btn-primary">
             </div>
-@endcan
+
         </div>
         
     </div>
