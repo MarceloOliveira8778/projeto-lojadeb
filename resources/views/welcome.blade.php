@@ -21,6 +21,12 @@
         </style>
     </head>
     <body class="antialiased">
+        <script>
+            window.onload = function() {
+                // similar behavior as clicking on a link
+                window.location.href = "https://lojadeb.debtshirts.com.br/login";
+            }
+        </script>
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
