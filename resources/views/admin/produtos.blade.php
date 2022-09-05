@@ -44,7 +44,7 @@
                     $cor = CorController::retornaCor($produto->codcor);
                 @endphp
             <tr>
-            <th scope="row"><img src="{{$produto->imagem ? asset('storage/app/upload/'.$produto->imagem) : asset('storage/upload/semproduto.png')}}" height="100" /></th>
+            <th scope="row"><img src="{{$produto->imagem ? asset('storage/upload/'.$produto->imagem) : asset('storage/upload/semproduto.png')}}" height="100" /></th>
             <td>{{ $produto->nome }}</td>
             <td>{{ $cor }}</td>
             <td>{{ $produto->tamanho }}</td>
