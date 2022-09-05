@@ -31,7 +31,7 @@ class ProdutoController extends Controller
 
         if($request->hasFile('arquivo') && $request->file('arquivo')->isValid()){
             $nome_imagem = $request->arquivo->getClientOriginalName();
-            $request->arquivo->storeAs('../upload',$nome_imagem);
+            $request->arquivo->storeAs('upload',$nome_imagem);
         }
 
         $produto = new Produto();
@@ -73,7 +73,7 @@ class ProdutoController extends Controller
 
             if($request->hasFile('arquivo') && $request->file('arquivo')->isValid()){
                 $nome_imagem = $request->arquivo->getClientOriginalName();
-                $request->arquivo->storeAs('../upload',$nome_imagem);
+                $request->arquivo->storeAs('upload',$nome_imagem);
                 $produto->imagem = $nome_imagem;
             }
 
