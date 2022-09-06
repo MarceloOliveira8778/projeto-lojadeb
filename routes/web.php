@@ -22,6 +22,7 @@ Route::get('/', function () {
 });
 
 Route::get('/pedidos', [PedidoController::class, 'index']);
+Route::get('/pedidoconferir/{id}', [ProdutoController::class, 'conferirPedido']);
 Route::post('/pedidos', [PedidoController::class, 'store']);
 
 Route::get('/pedidos/{id}', [PedidoController::class, 'importarProduto']);

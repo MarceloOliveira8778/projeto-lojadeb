@@ -111,8 +111,12 @@
                     <td>
                         @if($pedido->produtosadd=='N')
                         <a href="/pedidos/{{ $pedido->id }}" class="badge bg-success">Importar Produtos</a>
-                        @else
-                        <a href="/pedidoconferir/{{ $pedido->id }}" class="badge bg-info">Conferir Pedido</a>
+                        @else 
+                            @if($pedido->pedidoconferido=='N')
+                            <a href="/pedidoconferir/{{ $pedido->id }}" class="badge bg-info">Conferir Pedido</a>
+                            @else
+                            <p class="badge bg-alert">Pedido Conferido</p>
+                            @endif
                         @endif
                     </td>
                 </tr>

@@ -111,7 +111,13 @@ if(isset($produto)) {
             </div>
 
             <div class="col-10 mt-2 text-right">
+                @if(isset($indice))
+                <input type="hidden" name="hdnIsConfere" id="hdnIsConfere" value="{{$indice}}">
+                <input type="submit" value="Salvar e próximo" class="btn btn-primary">
+                @else
+                <input type="hidden" name="hdnIsConfere" id="hdnIsConfere" value="">
                 <input type="submit" value="Salvar" class="btn btn-primary">
+                @endif
             </div>
 
         </div>

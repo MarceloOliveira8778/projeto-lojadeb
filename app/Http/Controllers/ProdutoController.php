@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cor;
-
+use App\Models\Pedido;
 use App\Models\Produto;
 
 class ProdutoController extends Controller
@@ -18,6 +18,39 @@ class ProdutoController extends Controller
     {
         $produtos = Produto::simplepaginate(env('SIS_QTDPAGINAS'));
         return view('admin/produtos', ['produtos' => $produtos]);
+    }
+
+    public static function conferirPedido($idPedido, $indice = 0){
+        if(!$idPedido) {
+            return redirect('/pedidos');
+        }
+        else
+        {
+            /*echo '<pre>';
+            print_r($idPedido);
+            print_r($indice);
+            exit;*/
+            $produtos = Produto::where('codpedido', $idPedido)->orderBy('id')->get();
+            if(!isset($produtos[$indice]))
+            {
+                $pedido = Pedido::find($idPedido);
+                $pedido->pedidoconferido = 'S';
+                $pedido->save();
+                return redirect('/pedidos');
+            }
+            else
+            {
+                $produto = $produtos[$indice];
+                $indice = $indice + 1;
+                $cores = Cor::all()->sortBy('nome');
+                return view('admin.produtoscadastro', [
+                            'produto' => $produto,
+                            'cores' => $cores,
+                            'indice' => $indice
+                        ]);
+            }
+        }
+        
     }
 
     public function create(){
@@ -68,8 +101,10 @@ class ProdutoController extends Controller
     public function update(Request $request, $id)
     {
         $produto = Produto::find($id);
+        $codPedido = null;
         if($produto){
             $nome_imagem = $request->input('imagem');
+            $codPedido = $produto->codPedido;
 
             if($request->hasFile('arquivo') && $request->file('arquivo')->isValid()){
                 $nome_imagem = $request->arquivo->getClientOriginalName();
@@ -86,7 +121,14 @@ class ProdutoController extends Controller
 
             $produto->save();
         }
-        return redirect('/produtos');
+        if($request->input('hdnIsConfere')!=''){
+            return ProdutoController::conferirPedido($codPedido, $request->input('hdnIsConfere'));
+        }
+        else
+        {
+            return redirect('/produtos');
+        }
+        
     }
 
     public function excluir($id){

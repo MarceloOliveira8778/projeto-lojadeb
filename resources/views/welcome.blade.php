@@ -24,7 +24,7 @@
         <script>
             window.onload = function() {
                 // similar behavior as clicking on a link
-                window.location.href = "https://lojadeb.debtshirts.com.br/login";
+                window.location.href = "{{env('APP_URL').'/login'}}";
             }
         </script>
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
