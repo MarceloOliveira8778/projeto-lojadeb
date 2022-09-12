@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cor;
 use App\Models\Pedido;
 use App\Models\Produto;
+use Illuminate\Support\Facades\Auth;
 
 class ProdutoController extends Controller
 {
@@ -77,6 +78,7 @@ class ProdutoController extends Controller
         $produto->quantidade = 1;
         $produto->datapedido = $request->input('datapedido');
         $produto->codpedido = 0;
+        $produto->user_id = Auth::user()->id;
 
         $produto->save();
         return redirect('/produtos');

@@ -72,6 +72,7 @@
                     $produto->quantidade = 1;
                     $produto->datapedido = $pedido->datapedido;
                     $produto->codpedido = $pedido->id;
+                    $produto->user_id = Auth::user()->id;
                     $produto->save();
 
                 }	

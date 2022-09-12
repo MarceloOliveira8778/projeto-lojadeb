@@ -27,6 +27,7 @@ class PedidoController extends Controller
         $pedido->datapedido = $request->datapedido;
         $pedido->link = $request->link;
         $pedido->totalpedido = $request->totalpedido;
+        $pedido->valorfrete = $request->valorfrete;
 
         $pedido->save();
 

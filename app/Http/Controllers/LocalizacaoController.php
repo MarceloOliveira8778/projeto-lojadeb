@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Cliente;
-use App\Models\Produto;
 
-class ClienteController extends Controller
+class LocalizacaoController extends Controller
 {
     public function __construct()
     {
@@ -40,7 +38,7 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**
@@ -74,22 +72,7 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $cliente = Cliente::find($id);
-
-        if(!$cliente) {
-            return redirect('/vendas');
-        }
-        else
-        {
-            $cliente->nome = $request->input('nome');
-            $cliente->email = $request->input('email');
-
-            $cliente->save();
-
-            $produtos = Produto::where('quantidade', '>', '0')->get();
-
-            return view('admin.vendanova', compact('cliente', 'produtos'));
-        }
+        //
     }
 
     /**
@@ -101,24 +84,5 @@ class ClienteController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function buscaClientePorWhats(Request $request)
-    {
-        $cliente = Cliente::where('whatsapp', $request->input('whatsapp'))->first();
-
-        $produtos = Produto::where('quantidade', '>', '0')->get();
-        
-        if(!$cliente)
-        {
-            $cliente = new Cliente();
-            $cliente->nome = '';
-            $cliente->whatsapp = $request->input('whatsapp');
-
-            $cliente->save();
-            echo 'novo';
-        }
-
-        return view('admin.vendanova', compact('cliente', 'produtos'));
     }
 }

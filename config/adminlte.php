@@ -252,6 +252,23 @@ return [
             'text'        => 'Produtos',
             'url'         => 'produtos',
             'icon'        => 'fas fa-tshirt',
+            'submenu' => [
+                [
+                    'text' => 'Listar todos',
+                    'url'  => 'produtos',
+                    'icon' => '',
+                ],
+                [
+                    'text' => 'Cadastrar Novo',
+                    'url'  => 'produtoscadastro',
+                    'icon' => '',
+                ],
+                [
+                    'text' => 'Transferir de Local',
+                    'url'  => '#',
+                    'icon' => '',
+                ],
+            ]
         ],
         [
             'text'        => 'Vendas',
@@ -262,17 +279,48 @@ return [
             'text'        => 'Financeiro',
             'url'         => '#',
             'icon'        => 'fas fa-coins',
+            'can'         => 'gerencia-loja',
+            'submenu' => [
+                [
+                    'text' => 'Contas a Pagar',
+                    'url'  => '#',
+                    'icon' => '',
+                ],
+            ]
         ],
         [
             'text'        => 'Relatórios',
             'url'         => 'relatorios',
             'icon'        => 'fas fa-file-alt',
-            'can'         => 'manage-users',
+            'can'         => 'gerencia-loja',
+            'submenu' => [
+                [
+                    'text' => 'Contas a Pagar',
+                    'url'  => '#',
+                    'icon' => '',
+                ],
+                [
+                    'text' => 'Estoque',
+                    'url'  => '#',
+                    'icon' => '',
+                ],
+                [
+                    'text' => 'Fluxo de Caixa',
+                    'url'  => '#',
+                    'icon' => '',
+                ],
+                [
+                    'text' => 'Movimento',
+                    'url'  => '#',
+                    'icon' => '',
+                ],
+            ]
         ],
         [
             'text'        => 'Registrar Usuario',
             'url'         => 'register',
             'icon'        => 'fas fa-user-plus',
+            'target'        => '_blank',
             'can'         => 'manage-users',
         ],
         /*

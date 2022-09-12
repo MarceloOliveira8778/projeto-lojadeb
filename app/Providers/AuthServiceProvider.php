@@ -26,8 +26,16 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         //
-        Gate::define('manage-users', function($user) {
-            return $user->email=='teste@teste.com'
+        Gate::define('gerencia-loja', function ($user) {
+            return (($user->email == 'teste@teste.com') ||
+                ($user->email == 'bruna@debtshirts.com.br') ||
+                ($user->email == 'debora@debtshirts.com.br'))
+                ? true
+                : false;
+        });
+
+        Gate::define('manage-users', function ($user) {
+            return $user->email == 'teste@teste.com'
                 ? true
                 : false;
         });

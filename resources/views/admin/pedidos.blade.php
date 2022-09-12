@@ -63,6 +63,13 @@
                 </div>
 
                 <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Valor do Frete</label>
+                    <div class="col-sm-10">
+                        <input type="number" required class="form-control" id="valorfrete" name="valorfrete" min="0" step=".01">
+                    </div>
+                </div>
+
+                <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Link do Pedido</label>
                     <div class="col-sm-10">
                         <input type="text" required class="form-control" placeholder="Link completo com https://..." id="link" name="link">
